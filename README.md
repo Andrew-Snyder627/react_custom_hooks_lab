@@ -1,70 +1,86 @@
 # Lab: Form Storage
 
-## Overview  
+## Overview
+
 Now that we’ve covered the basics of creating custom hooks, let’s use our skills to implement a popular feature when it comes to user convenience. You are working with a repair company and you want the user to be able to keep the inputted form data between refreshes. They don’t want to store it within a `db.json` file as that is less secure, however, we can use the user's local storage to store the data and create a custom hook in order to manipulate the local storage.
 
-## Task 1: Define the Problem  
+## Task 1: Define the Problem
+
 As a user, one should be able to:
+
 - Input data in the form.
 - Refresh the page.
 - See the form store the data.
 
-## Task 2: Determine the Design  
+## Task 2: Determine the Design
+
 - Build a custom hook that will manipulate local storage.
 
-## Task 3: Develop the Code  
+## Task 3: Develop the Code
+
 - Create a custom hook, `useLocalStorage`, to manipulate the local storage of the user.
 - Connect the custom hook to the form to persist user data upon refresh.
 
-## Task 4: Test and Refine  
+## Task 4: Test and Refine
+
 - Debug and test during development using the provided test suite and React DevTools in Chrome.
 
-## Task 5: Document and Maintain  
+## Task 5: Document and Maintain
+
 - Commit as you go, writing meaningful commit messages.
 - Push commit history to GitHub periodically and when the lab is complete.
 
 ---
 
-## Tools and Resources  
-- **React Custom Hooks:** [React Docs](https://react.dev/learn/reusing-logic-with-custom-hooks)  
-- **localStorage:** [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)  
+## Tools and Resources
+
+- **React Custom Hooks:** [React Docs](https://react.dev/learn/reusing-logic-with-custom-hooks)
+- **localStorage:** [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 ---
 
-## Instructions  
+## Instructions
 
-### Set Up  
+### Set Up
+
 Before we begin coding, let's complete the initial setup for this lesson:
 
-#### Fork and Clone  
+#### Fork and Clone
+
 1. Go to the provided GitHub repository link.
 2. Fork the repository to your GitHub account.
 3. Clone the forked repository to your local machine.
 4. Open the project in VSCode.
 5. Run `npm install` to install all necessary dependencies.
 
-### Task 1: Define the Problem  
+### Task 1: Define the Problem
+
 As a user, one should be able to:
+
 - Input data in the form.
 - Refresh the page.
 - See the form store the data.
 
-### Task 2: Determine the Design  
+### Task 2: Determine the Design
+
 - Build a custom hook that will manipulate local storage.
 
-### Task 3: Develop, Test, and Refine the Code  
+### Task 3: Develop, Test, and Refine the Code
 
-#### Open React application in the browser  
+#### Open React application in the browser
+
 ```sh
 npm run dev
 ```
 
-#### Run test suite  
+#### Run test suite
+
 ```sh
 npm run test
 ```
 
-#### Create feature branch  
+#### Create feature branch
+
 - **Create custom hook, `useLocalStorage`**
   - `useLocalStorage` function will have **2 inputs**:
     - `key`: The name of the input.
@@ -82,9 +98,10 @@ npm run test
 - **Push feature branch and open a PR on GitHub.**
 - **Merge to main.**
 
-### Task 4: Document and Maintain  
+### Task 4: Document and Maintain
 
 #### Best Practice Documentation Steps:
+
 - Add comments to the code to explain purpose and logic.
 - Clarify intent/functionality of code to other developers.
 - Add a screenshot of the completed work in Markdown in `README.md`.
@@ -95,12 +112,45 @@ npm run test
 
 ---
 
-## Submission  
+## Submission
+
 Once all tests are passing and working code is pushed to the GitHub `main` branch, submit your GitHub repo through Canvas using CodeGrade.
 
-## Grading Criteria  
+## Grading Criteria
+
 The application passes all test suites.
 
 Ensure the application:
+
 - **Persists user data between refreshes.**
 - **Has a functional custom hook (`useLocalStorage`).**
+
+## Custom Hook: useLocalStorage
+
+This app demonstrates how to build and use a **custom React hook** called `useLocalStorage` to persist form data in the browser. This allows users to retain input values between page refreshes without saving data to a backend.
+
+### Features
+
+- Stores form input (`name`, `serviceNumber`) in local storage
+- Recalls form values after the page is refreshed
+- Fully tested with a custom test suite
+
+### How It Works
+
+The `useLocalStorage` hook:
+
+- Accepts a `key` and `initialValue`
+- Initializes state based on `localStorage.getItem(key)`
+- Updates `localStorage` using `useEffect` whenever the state changes
+
+### Example Usage
+
+```js
+const [name, setName] = useLocalStorage("name", "");
+```
+
+### Screenshot
+
+This screenshot shows the form **retaining user input after a page refresh**:
+
+![Form persists after refresh](./src/assets/Screenshot%202025-06-11%20at%208.09.33 PM.png)
